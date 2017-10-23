@@ -1,0 +1,78 @@
+@mixin var($property, $varName) {
+  #{$property}: map-get($vars, $varName);
+  #{$property}: var(--#{$varName}, map-get($vars, $varName));
+}
+
+$vars: (
+        card-width: 10%,
+        card-z-index: 1,
+
+        weight-1-light: rgba(40, 155, 206, 1.0),
+        weight-1-medium: rgba(36, 67, 94, 1.0),
+        weight-1-dark: rgba(25, 52, 82, 1.0),
+
+        weight-2-light: rgba(227, 161, 14, 1.0),
+        weight-2-medium: rgba(159, 82, 9, 1.0),
+        weight-2-dark: rgba(105, 48, 0, 1.0),
+
+        weight-3-light: rgba(40, 155, 206, 1.0),
+        weight-3-medium: rgba(36, 67, 94, 1.0),
+        weight-3-dark: rgba(25, 52, 82, 1.0),
+
+        weight-5-light: rgba(227, 161, 14, 1.0),
+        weight-5-medium: rgba(159, 82, 9, 1.0),
+        weight-5-dark: rgba(105, 48, 0, 1.0),
+
+        weight-7-light: rgba(207, 98, 69, 1.0),
+        weight-7-medium: rgba(196, 25, 31, 1.0),
+        weight-7-dark: rgba(158, 32, 36, 1.0),
+
+        //card background colors by weight
+        background-color-1: radial-gradient(rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.3)),
+        background-color-2: radial-gradient(rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.5)),
+        background-color-3: radial-gradient(rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.6)),
+        background-color-5: radial-gradient(rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.7)),
+        background-color-7: radial-gradient(rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.8)),
+
+        face-value-color-weight-1: rgba(40, 155, 206, 1.0),
+        face-value-color-weight-2: rgba(218, 148, 17, 1.0),
+        face-value-color-weight-3: rgba(25, 52, 82, 1.0),
+        face-value-color-weight-5: rgba(159, 82, 9, 1.0),
+        face-value-color-weight-7: rgba(196, 25, 31, 1.0)
+);
+
+.hand {
+  position: absolute;
+  left: 70px;
+  bottom: 0px;
+
+  font-size: 10px;
+  width: calc(100% - 70px);
+  width: 100%;
+  //height: 100%;
+  //min-width: 400px;
+  background-clip: border-box;
+
+  .card-container {
+    @include var(z-index, card-z-index);
+
+    position: absolute;
+    bottom: 10px;
+    padding-left: 10px;
+    left: calc(var(--card-z-index) * (9%));
+    border-radius: 10px;
+
+    transition: z-index 0.3s, padding 0.3s, margin 0.3s, top 0.5s;
+
+    &:hover {
+      z-index: 10;
+      width: 14%;
+      margin-left: -4%;
+    }
+
+    .card {
+      //min-width:145px;
+    }
+  }
+}
+
