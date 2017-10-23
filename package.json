@@ -11,9 +11,9 @@
     "umd"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
+    "build": "nwb build-react-component --copy-files",
     "clean": "nwb clean-module && nwb clean-demo",
-    "start": "nwb serve-react-demo --port 5001",
+    "start": "nwb serve-react-demo --port 5000",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
@@ -21,14 +21,15 @@
   },
   "dependencies": {
     "6nimmt-card": "^1.0.0",
-    "gh-pages": "^1.0.0"
+    "nwb-sass": "^0.8.1"
   },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "nwb": "0.19.x",
-    "react": "^16.0.0",
+    "react": "^15.6.2",
     "react-dom": "^16.0.0"
   },
   "author": "",
