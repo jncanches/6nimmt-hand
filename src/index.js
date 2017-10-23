@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 
+import Card from '6nimmt-card';
+
 export default class extends Component {
   render() {
     return <div>
-      <h2>Welcome to React components</h2>
+      <Card faceValue={2}></Card>
     </div>
   }
 }
