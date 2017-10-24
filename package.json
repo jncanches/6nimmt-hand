@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "6nimmt-card": "^1.0.6",
+    "6nimmt-utils": "^1.0.0",
     "classnames": "^2.2.5"
   },
   "peerDependencies": {

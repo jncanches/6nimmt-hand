@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 import styles from './styles.scss';
 import classnames from 'classnames';
 
-import Card from '6nimmt-card'
+import Utils from '6nimmt-utils';
+import Card from '6nimmt-card';
 
 export default class extends Component {
     constructor(props) {
@@ -28,21 +29,27 @@ export default class extends Component {
     return <div className={handClass}>
         {cardList}
         <div className="actions">
-            <button onClick={this.sortCards.bind(this, 'faceValue')} value='ltr'>Face value -&gt;</button>
+            <button onClick={this.sortCards.bind(this, 'faceValue')} value='asc'>Face value -&gt;</button>
             <br/>
-            <button onClick={this.sortCards.bind(this, 'faceValue')} value='rtl'>Face value &lt;-</button>
+            <button onClick={this.sortCards.bind(this, 'faceValue')} value='desc'>Face value &lt;-</button>
             <br/>
-            <button onClick={this.sortCards.bind(this, 'weight')} value='ltr'>Weight -&gt;</button>
+            <button onClick={this.sortCards.bind(this, 'weight')} value='asc'>Weight -&gt;</button>
             <br/>
-            <button onClick={this.sortCards.bind(this, 'weight')} value='rtl'>Weight &lt;-</button>
+            <button onClick={this.sortCards.bind(this, 'weight')} value='desc'>Weight &lt;-</button>
         </div>
     </div>
   }
 
   sortCards(sortBy, e) {
-      var reverse = e.target.value === "rtl";
+      var reverse = e.target.value === "desc";
       const cards = [...this.state.cards];
-      cards.sort((a,b) => (a - b) * (reverse?-1:1));
+      cards.sort((a,b) => {
+          if (sortBy === 'weight') {
+              return (Utils.getWeightFromFaceValue(a) - Utils.getWeightFromFaceValue(b)) * (reverse ? -1 : 1)
+          } else {
+              return (a - b) * (reverse ? -1 : 1)
+          }
+      });
       this.setState({cards: cards});
   }
 }
