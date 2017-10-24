@@ -20,7 +20,7 @@
     "publish": "nwb build-react-component --copy-files && gh-pages -d demo/dist"
   },
   "dependencies": {
-    "6nimmt-card": "^1.0.3",
+    "6nimmt-card": "^1.0.4",
     "classnames": "^2.2.5",
     "nwb-sass": "^0.8.1"
   },
